@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id              Int       @id @default(autoincrement())
+  name            String
+  email           String    @unique
+  emailVerifiedAt DateTime? @map("email_verified_at")
+  password        String
+  role            String    @default("user")
+  rememberToken   String?   @map("remember_token")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  lifePlans   LifePlan[]
+  quizResults QuizResult[]
+
+  @@map("users")
+}
+
+model LifePlan {
+  id           Int      @id @default(autoincrement())
+  userId       Int?     @map("user_id")
+  nama         String?
+  kekuatan     String?
+  kelemahan    String?
+  minat        String?
+  visi         String?
+  target5      String?
+  target1      String?
+  niat         String?
+  subgoals     Json?
+  matrixUi     String?  @map("matrix_ui")
+  matrixNui    String?  @map("matrix_nui")
+  matrixUni    String?  @map("matrix_uni")
+  matrixNuni   String?  @map("matrix_nuni")
+  jadwal       Json?
+  evalBaik     String?  @map("eval_baik")
+  evalPerbaiki String?  @map("eval_perbaiki")
+  evalDoa      String?  @map("eval_doa")
+  wheelScores  Json?    @map("wheel_scores")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("life_plans")
+}
+
+model QuizResult {
+  id             Int      @id @default(autoincrement())
+  userId         Int?     @map("user_id")
+  score          Int
+  totalQuestions Int      @map("total_questions")
+  percentage     Int
+  level          String?
+  message        String?
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("quiz_results")
+}
