@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="blueGreen" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="50%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#FBBF24" />
+    </linearGradient>
+    <mask id="network-mask">
+      <rect x="0" y="0" width="512" height="512" fill="white" />
+      <circle cx="140" cy="380" r="14" fill="black" />
+      <circle cx="372" cy="380" r="14" fill="black" />
+      <circle cx="188" cy="280" r="12" fill="black" />
+      <circle cx="324" cy="280" r="12" fill="black" />
+    </mask>
+    <mask id="moon-mask">
+      <rect x="0" y="0" width="512" height="512" fill="white" />
+      <circle cx="256" cy="220" r="200" fill="black" />
+    </mask>
+  </defs>
+
+  <rect x="0" y="0" width="512" height="512" fill="#0F172A" rx="112" />
+
+  <g transform="rotate(-30 256 256)">
+    <circle cx="256" cy="256" r="216" fill="url(#gold)" mask="url(#moon-mask)" />
+  </g>
+
+  <g mask="url(#network-mask)">
+    <path d="M 140 380 L 256 140 L 372 380" fill="none" stroke="url(#blueGreen)" stroke-width="56" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 188 280 L 324 280" fill="none" stroke="url(#blueGreen)" stroke-width="48" stroke-linecap="round" />
+  </g>
+
+  <circle cx="140" cy="380" r="6" fill="url(#gold)" />
+  <circle cx="372" cy="380" r="6" fill="url(#gold)" />
+  <circle cx="188" cy="280" r="5" fill="url(#gold)" />
+  <circle cx="324" cy="280" r="5" fill="url(#gold)" />
+
+  <rect x="232" y="96" width="48" height="48" rx="8" transform="rotate(45 256 120)" fill="url(#gold)" />
+</svg>

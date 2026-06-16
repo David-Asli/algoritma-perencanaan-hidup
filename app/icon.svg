@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </radialGradient>
+    <radialGradient id="emeraldGlow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+    <linearGradient id="em" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+    <filter id="glowGold">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowEm">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="cc"><circle cx="256" cy="256" r="245"/></clipPath>
+  </defs>
+
+  <!-- Dark navy circular badge -->
+  <circle cx="256" cy="256" r="256" fill="#0F172A"/>
+  <circle cx="256" cy="256" r="245" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="245" fill="url(#emeraldGlow)"/>
+
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="240" fill="none" stroke="#10B981" stroke-width="2.5" stroke-opacity="0.4"/>
+  <circle cx="256" cy="256" r="233" fill="none" stroke="#FBBF24" stroke-width="1" stroke-opacity="0.2"/>
+
+  <!-- Circuit traces left -->
+  <g clip-path="url(#cc)" opacity="0.6">
+    <line x1="55"  y1="305" x2="145" y2="305" stroke="#10B981" stroke-width="1.8" stroke-opacity="0.45"/>
+    <line x1="145" y1="285" x2="145" y2="325" stroke="#10B981" stroke-width="1.8" stroke-opacity="0.45"/>
+    <circle cx="145" cy="305" r="5" fill="#10B981" opacity="0.55"/>
+    <circle cx="55"  cy="305" r="3.5" fill="#10B981" opacity="0.35"/>
+    <line x1="55"  y1="335" x2="118" y2="335" stroke="#10B981" stroke-width="1.2" stroke-opacity="0.3"/>
+    <circle cx="118" cy="335" r="3" fill="#10B981" opacity="0.35"/>
+  </g>
+
+  <!-- Circuit traces right -->
+  <g clip-path="url(#cc)" opacity="0.6">
+    <line x1="367" y1="305" x2="457" y2="305" stroke="#10B981" stroke-width="1.8" stroke-opacity="0.45"/>
+    <line x1="367" y1="285" x2="367" y2="325" stroke="#10B981" stroke-width="1.8" stroke-opacity="0.45"/>
+    <circle cx="367" cy="305" r="5" fill="#10B981" opacity="0.55"/>
+    <circle cx="457" cy="305" r="3.5" fill="#10B981" opacity="0.35"/>
+    <line x1="394" y1="335" x2="457" y2="335" stroke="#10B981" stroke-width="1.2" stroke-opacity="0.3"/>
+    <circle cx="394" cy="335" r="3" fill="#10B981" opacity="0.35"/>
+  </g>
+
+  <!-- CRESCENT MOON -->
+  <g filter="url(#glowGold)" transform="translate(256,148)">
+    <path d="M0,-80 A80,80 0 1,1 56.57,56.57 A56,56 0 1,0 0,-80 Z"
+          fill="url(#gold)" transform="rotate(-30)"/>
+  </g>
+
+  <!-- LETTER A -->
+  <g transform="translate(256,258)" filter="url(#glowEm)">
+    <polygon points="0,-98  -54,58  -31,58  0,-40"  fill="url(#em)"/>
+    <polygon points="0,-98   54,58   31,58   0,-40"  fill="url(#em)"/>
+    <rect x="-31" y="4" width="62" height="15" rx="5" fill="#FBBF24"/>
+  </g>
+
+  <!-- ROADMAP UPWARD PATH -->
+  <g filter="url(#glowEm)">
+    <line x1="256" y1="425" x2="256" y2="355" stroke="#10B981" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="256" cy="425" r="8"   fill="#10B981" opacity="0.9"/>
+    <circle cx="256" cy="398" r="5.5" fill="#10B981" opacity="0.7"/>
+    <circle cx="256" cy="375" r="4"   fill="#34D399" opacity="0.6"/>
+    <!-- Arrow tip -->
+    <polyline points="238,358  256,338  274,358"
+              fill="none" stroke="#FBBF24" stroke-width="5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- 4-pointed star accents -->
+  <g transform="translate(178,192)" opacity="0.8" filter="url(#glowGold)">
+    <path d="M0,-10 L2.5,-2.5 L10,0 L2.5,2.5 L0,10 L-2.5,2.5 L-10,0 L-2.5,-2.5 Z" fill="#FBBF24"/>
+  </g>
+  <g transform="translate(334,192)" opacity="0.8" filter="url(#glowGold)">
+    <path d="M0,-10 L2.5,-2.5 L10,0 L2.5,2.5 L0,10 L-2.5,2.5 L-10,0 L-2.5,-2.5 Z" fill="#FBBF24"/>
+  </g>
+  <circle cx="196" cy="218" r="3" fill="#FBBF24" opacity="0.4"/>
+  <circle cx="316" cy="218" r="3" fill="#FBBF24" opacity="0.4"/>
+
+</svg>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Export App Icon PNG</title>
+  <style>
+    body { background: #111; display: flex; flex-direction: column; align-items: center;
+           justify-content: center; min-height: 100vh; gap: 24px; font-family: sans-serif; color: #fff; }
+    canvas { border-radius: 22%; box-shadow: 0 0 40px #10B98155; }
+    button { background: #10B981; color: #fff; border: none; padding: 14px 32px;
+             border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: 600; }
+    button:hover { background: #059669; }
+    .sizes { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .size-btn { background: #1E3A5F; font-size: 13px; padding: 10px 20px; }
+    p { color: #94a3b8; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h2>🎨 Export Algoritma Perencanaan Hidup Icon</h2>
+  <p>Preview 512×512 — klik tombol untuk download PNG</p>
+  <canvas id="c" width="512" height="512"></canvas>
+  <div class="sizes">
+    <button class="size-btn" onclick="exportPNG(512, 'icon-512.png')">Download 512×512 (App Store)</button>
+    <button class="size-btn" onclick="exportPNG(192, 'icon-192.png')">Download 192×192 (PWA)</button>
+    <button class="size-btn" onclick="exportPNG(180, 'apple-icon.png')">Download 180×180 (Apple)</button>
+    <button class="size-btn" onclick="exportPNG(32,  'icon.png')">Download 32×32 (Favicon PNG)</button>
+  </div>
+  <button onclick="exportPNG(512, 'icon.png')">⬇ Download icon.png (512px) — Ganti Public Folder</button>
+
+  <script>
+    const svgSrc = `public/logo-icon.svg`;
+
+    const svg512 = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </radialGradient>
+    <radialGradient id="emeraldGlow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+    <linearGradient id="em" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+    <filter id="glowGold">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowEm">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <circle cx="256" cy="256" r="256" fill="#0F172A"/>
+  <circle cx="256" cy="256" r="245" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="245" fill="url(#emeraldGlow)"/>
+  <circle cx="256" cy="256" r="240" fill="none" stroke="#10B981" stroke-width="2.5" stroke-opacity="0.4"/>
+  <circle cx="256" cy="256" r="233" fill="none" stroke="#FBBF24" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="55" y1="305" x2="145" y2="305" stroke="#10B981" stroke-width="1.8" stroke-opacity="0.45"/>
+  <line x1="145" y1="285" x2="145" y2="325" stroke="#10B981" stroke-width="1.8" stroke-opacity="0.45"/>
+  <circle cx="145" cy="305" r="5" fill="#10B981" opacity="0.55"/>
+  <circle cx="55" cy="305" r="3.5" fill="#10B981" opacity="0.35"/>
+  <line x1="367" y1="305" x2="457" y2="305" stroke="#10B981" stroke-width="1.8" stroke-opacity="0.45"/>
+  <line x1="367" y1="285" x2="367" y2="325" stroke="#10B981" stroke-width="1.8" stroke-opacity="0.45"/>
+  <circle cx="367" cy="305" r="5" fill="#10B981" opacity="0.55"/>
+  <circle cx="457" cy="305" r="3.5" fill="#10B981" opacity="0.35"/>
+  <g filter="url(#glowGold)" transform="translate(256,148)">
+    <path d="M0,-80 A80,80 0 1,1 56.57,56.57 A56,56 0 1,0 0,-80 Z" fill="url(#gold)" transform="rotate(-30)"/>
+  </g>
+  <g transform="translate(256,258)" filter="url(#glowEm)">
+    <polygon points="0,-98  -54,58  -31,58  0,-40" fill="url(#em)"/>
+    <polygon points="0,-98   54,58   31,58   0,-40" fill="url(#em)"/>
+    <rect x="-31" y="4" width="62" height="15" rx="5" fill="#FBBF24"/>
+  </g>
+  <g filter="url(#glowEm)">
+    <line x1="256" y1="425" x2="256" y2="355" stroke="#10B981" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="256" cy="425" r="8" fill="#10B981" opacity="0.9"/>
+    <circle cx="256" cy="398" r="5.5" fill="#10B981" opacity="0.7"/>
+    <circle cx="256" cy="375" r="4" fill="#34D399" opacity="0.6"/>
+    <polyline points="238,358  256,338  274,358" fill="none" stroke="#FBBF24" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(178,192)" opacity="0.8" filter="url(#glowGold)">
+    <path d="M0,-10 L2.5,-2.5 L10,0 L2.5,2.5 L0,10 L-2.5,2.5 L-10,0 L-2.5,-2.5 Z" fill="#FBBF24"/>
+  </g>
+  <g transform="translate(334,192)" opacity="0.8" filter="url(#glowGold)">
+    <path d="M0,-10 L2.5,-2.5 L10,0 L2.5,2.5 L0,10 L-2.5,2.5 L-10,0 L-2.5,-2.5 Z" fill="#FBBF24"/>
+  </g>
+</svg>`;
+
+    function drawToCanvas(size, canvasEl) {
+      const blob = new Blob([svg512], {type: 'image/svg+xml;charset=utf-8'});
+      const url  = URL.createObjectURL(blob);
+      const img  = new Image();
+      img.onload = () => {
+        const ctx = canvasEl.getContext('2d');
+        canvasEl.width  = size;
+        canvasEl.height = size;
+        ctx.clearRect(0,0,size,size);
+        ctx.drawImage(img, 0, 0, size, size);
+        URL.revokeObjectURL(url);
+      };
+      img.src = url;
+    }
+
+    drawToCanvas(512, document.getElementById('c'));
+
+    function exportPNG(size, filename) {
+      const tmp = document.createElement('canvas');
+      drawToCanvas(size, tmp);
+      setTimeout(() => {
+        tmp.toBlob(blob => {
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = filename;
+          a.click();
+        }, 'image/png');
+      }, 400);
+    }
+  </script>
+</body>
+</html>
