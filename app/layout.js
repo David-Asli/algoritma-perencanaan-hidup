@@ -1,4 +1,5 @@
 import { Inter, Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 
@@ -12,6 +13,16 @@ const poppins = Poppins({
 export const metadata = {
   title: "Algoritma Perencanaan Hidup",
   description: "Perencanaan hidup komprehensif berbasis Computational Thinking dan nilai-nilai Islam.",
+  manifest: "/manifest.json",
+  applicationName: "AlgoPlan",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "AlgoPlan",
+  },
+  formatDetection: {
+    telephone: false,
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -24,6 +35,16 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)",  color: "#0F172A" },
+    { media: "(prefers-color-scheme: light)", color: "#10B981" },
+  ],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="id" id="html-root">
@@ -31,6 +52,15 @@ export default function RootLayout({ children }) {
         <Providers>
           {children}
         </Providers>
+        <Script id="sw-register" strategy="afterInteractive">{`
+          if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+              navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('[SW] Registered:', reg.scope))
+                .catch(err => console.warn('[SW] Registration failed:', err));
+            });
+          }
+        `}</Script>
       </body>
     </html>
   );
