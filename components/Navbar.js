@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { Moon, Sun, Menu, X, LayoutDashboard, LogIn, LogOut, Rocket, Home, Lightbulb, GitBranch, HeartHandshake, BookOpen, HelpCircle, BookMarked } from "lucide-react";
-import PWAInstallButton from "@/components/PWAInstallButton";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -86,12 +85,10 @@ export default function Navbar() {
             <button onClick={toggleDarkMode} className="p-2 rounded-lg hover:bg-[var(--color-gray-100)] dark:hover:bg-white/10 transition-colors">
               {isDarkMode ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-[var(--color-gray-600)]" />}
             </button>
-            <PWAInstallButton variant="navbar" />
           </div>
 
           {/* Mobile Buttons */}
           <div className="flex items-center gap-1 lg:hidden">
-            <PWAInstallButton variant="mobile-topbar" />
             <button onClick={toggleDarkMode} className="p-2 rounded-lg hover:bg-[var(--color-gray-100)] dark:hover:bg-white/10 transition-colors">
               {isDarkMode ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-[var(--color-gray-600)] dark:text-white/70" />}
             </button>
@@ -123,7 +120,6 @@ export default function Navbar() {
         ))}
 
         <div className="mt-auto flex flex-col gap-2">
-          <PWAInstallButton variant="mobile" />
           <Link href="/planner" onClick={() => setIsMobileMenuOpen(false)} className="btn-primary w-full justify-center !text-sm">
             <Rocket className="w-4 h-4" /> Life Planner
           </Link>
