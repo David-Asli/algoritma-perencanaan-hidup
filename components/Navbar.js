@@ -91,6 +91,7 @@ export default function Navbar() {
 
           {/* Mobile Buttons */}
           <div className="flex items-center gap-1 lg:hidden">
+            <PWAInstallButton variant="mobile-topbar" />
             <button onClick={toggleDarkMode} className="p-2 rounded-lg hover:bg-[var(--color-gray-100)] dark:hover:bg-white/10 transition-colors">
               {isDarkMode ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-[var(--color-gray-600)] dark:text-white/70" />}
             </button>

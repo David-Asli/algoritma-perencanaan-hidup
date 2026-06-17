@@ -41,6 +41,27 @@ export default function PWAInstallButton({ variant = "navbar" }) {
   // Sudah terinstall — sembunyikan
   if (isInstalled) return null;
 
+  // ── Mobile Topbar (ikon saja, langsung di navbar HP) ────
+  if (variant === "mobile-topbar") {
+    return (
+      <button
+        onClick={handleInstall}
+        disabled={!ready || installing}
+        title={ready ? "Install aplikasi" : "Gunakan Chrome/Edge untuk install"}
+        className={`p-2 rounded-lg transition-all
+          ${ready
+            ? "text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 active:scale-95"
+            : "text-gray-300 dark:text-white/20 cursor-not-allowed"
+          }`}
+      >
+        {installing
+          ? <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+          : <Download className="w-5 h-5" />
+        }
+      </button>
+    );
+  }
+
   // ── Navbar variant ──────────────────────────────────────
   if (variant === "navbar") {
     return (
